@@ -14,6 +14,7 @@ test('Response - .location', async (t) => {
     response.location = new URL('http://localhost:4000/foo');
     assert.ok(response.location instanceof URL, 'Should be instance of URL');
     assert.equal(response.location.href, 'http://localhost:4000/foo', 'Should be set value');
+    assert.equal(response.status, 308, 'Should be 308');
   });
 
   await t.test('Illegal value', () => {
@@ -23,6 +24,14 @@ test('Response - .location', async (t) => {
     } catch (err) {
       assert.match(err.message, /Value must be of type URL/, 'Should throw');
     }
+  });
+
+  await t.test('Status is a 3xx value', () => {
+    const response = new HResponse();
+    response.status = 301;
+    response.location = new URL('http://localhost:4000/foo');
+    assert.equal(response.location.href, 'http://localhost:4000/foo', 'Should be set value');
+    assert.equal(response.status, 301, 'Should keep existing status');
   });
 });
 
