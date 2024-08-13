@@ -6,7 +6,7 @@ import {
   catchAllSegment,
   optionalCatchAllSegment,
   mapFileSystemRoute,
-} from '../../../lib/server/plugins/router/route-mapping.js';
+} from '../../../lib/server/plugins/router/router-mapping.js';
 
 test('.dynamicSegment() - No slug', () => {
   const result = dynamicSegment('/foo/bar/xyz');

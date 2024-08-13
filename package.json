@@ -17,6 +17,8 @@
     "lib"
   ],
   "exports": {
+    "./response": "./lib/classes/response.js",
+    "./request": "./lib/classes/request.js",
     "./server": "./lib/main.js",
     "./test": "./lib/test/test.js"
   },
@@ -52,7 +54,7 @@
     "http-errors": "2.0.0",
     "pino": "9.3.2",
     "pino-pretty": "11.2.2",
-    "tsx": "4.16.2"
+    "tsx": "4.17.0"
   },
   "optionalDependencies": {
     "@rollup/plugin-commonjs": "26.0.1",
@@ -62,18 +64,18 @@
     "@rollup/plugin-typescript": "11.1.6",
     "esbuild": "0.23.0",
     "esbuild-plugin-import-map": "3.0.0-next.2",
-    "rollup": "4.19.0",
+    "rollup": "4.20.0",
     "get-port": "7.1.0",
     "chokidar": "3.6.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "eslint": "9.7.0",
+    "eslint": "9.8.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
-    "globals": "15.8.0",
-    "lit": "3.1.4",
+    "globals": "15.9.0",
+    "lit": "3.2.0",
     "prettier": "3.3.3",
     "semantic-release": "24.0.0"
   },
