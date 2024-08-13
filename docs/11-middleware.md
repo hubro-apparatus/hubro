@@ -8,7 +8,7 @@ Simple example of a middleware which reads the search query parameter `text` and
 
 ```js
 export const middleware = async (request, response) => {
-  const text = request.searchParams.get('text');
+  const text = request.url.searchParams.get('text');
   return {
     text,
   };
@@ -73,7 +73,98 @@ TO BE IMPLEMENTED
 
 ## Writing middleware
 
+A middleware is an asyncronus function exported with the name `middleware`. The function takes two arguments:
 
+ * request - An instance of Request - Holds properties and values of the incomming HTTP request
+ * response - An instance of Response - Holds properties and values to be written on the outgoing HTTP response
+
+Example of a middleware signature:
+
+```js
+export const middleware = async (request, response) => {
+  // Middleware logic
+};
+```
+
+The Request Object is a read only Object which contain properties such as the Search Query Parameters, URL parameters and Headers on the inbound request. The Response Object contain properties to set values, such as HTTP status code, Headers, we want to set on the outbound response. The Response Object also contain a `.context` property for passing arbitrary values between middlewares and the `routes`, `actions` and `pages`.
+
+### Reading request values
+
+If one, as an example, have a route like this;
+
+```sh
+|--/pages
+|  |--/[species]
+|  |  |--/[name]
+|  |  |  |--/page.js
+```
+
+and its requested as follow:
+
+```sh
+http://localhost:4000/owls/hubro/?sort=ascending
+```
+
+we get hold of the different parts in the URL in a middleware as follow:
+
+```js
+export const middleware = async (request, response) => {
+
+  // Access URL Parameters
+  const { species, name } = request.urlParams;
+  console.log(species);  // yields "owls"
+  console.log(name);     // yields "hubro"
+
+  // Access Search Query Parameters
+  const sort = request.url.searchParams.get('sort');
+  console.log(name);     // yields "ascending"
+};
+```
+
+See the Request Object for an overview of properties and methods.
+
+### Setting response values
+
+Setting a HTTP header `x-hubro` to the value `owl` and redirecting to `/owl` with the HTTP status code `307`:
+
+```js
+export const middleware = async (request, response) => {
+  
+  // Append an HTTP Header
+  request.headers.append('x-hubro', 'owl');
+  
+  // Set the location to redirect too
+  request.location = new URL('/owl', request.url);
+
+  // Set the HTTP status code of the redirect
+  response.status = 307;
+};
+```
+
+See the Response Object for an overview of properties and methods.
+
+### Passing data between middleware levels
+
+Passing data between the Global Level middleware and the Route Level middleware is done by using the `.context` property on the Response Object.
+
+Example of setting a value in the Global Level middleware:
+
+```js
+export const middleware = async (request, response) => {
+  response.context = {
+    name: 'Hubro Apparatus',
+  };
+};
+```
+
+One can then read this value in the Route Level middleware:
+
+```js
+export const middleware = async (request, response) => {
+  const { name } = response.context;
+  console.log(name);     // yields "Hubro Apparatus"
+};
+```
 
 ## Inline middleware
 
