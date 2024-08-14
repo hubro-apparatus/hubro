@@ -1,6 +1,8 @@
 # Introduction
 
-Hubro aim to make it easy to build highly performant web applications with Lit based Web Components. 
+Hubro is a web application framework for building dynamically rendered and progressively enhanced web applications.
+
+With Hubro it is easy to build high-quality web applications with the power of the web platform itself.
 
 
 
