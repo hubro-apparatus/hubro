@@ -12,7 +12,9 @@ const delayed = (time = 1000, slot = '') => {
 
 const suspend = function* suspend(time, slot) {
   const value = yield delayed(time, slot);
-  return render(value);
+  console.log('KKK', value)
+  // return render(value);
+  // return value;
 }
 
 export default function* document(page, header) {
@@ -22,6 +24,7 @@ export default function* document(page, header) {
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      ${header?.getScripts()}
       <title>${header?.title}</title>
     </head>
     <body>`);
@@ -40,11 +43,9 @@ export default function* document(page, header) {
       </template>  
     `)
 
-
-    yield* suspend(1000, 'c');
-    yield* suspend(2000, 'a');
-    yield* suspend(500, 'b');
-    
+    yield* suspend(100, 'c');
+    yield* suspend(200, 'a');
+    yield* suspend(50, 'b');
 
     /*
     yield* render(html`
