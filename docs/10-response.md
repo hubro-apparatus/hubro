@@ -30,7 +30,7 @@ Example of creating a redirect to a different pathname, `/owl`, on the same serv
 
 ```js
 export const middleware = async (request, response) => {
-  request.location = new URL('/owl', request.url);
+  response.location = new URL('/owl', request.url);
 };
 ```
 
@@ -44,7 +44,7 @@ Example of appending a `x-hubro` HTTP Header to a response in a middleware:
 
 ```js
 export const middleware = async (request, response) => {
-  request.headers.append('x-hubro', 'owl');
+  response.headers.append('x-hubro', 'owl');
 };
 ```
 
@@ -57,7 +57,7 @@ export const middleware = async (request, response) => {
   const headers = new Headers({
     'x-hubro': 'owl',
   });
-  request.headers = headers;
+  response.headers = headers;
 };
 ```
 
