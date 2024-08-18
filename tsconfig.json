@@ -1,7 +1,6 @@
 {
   "include": ["./lib/**/*.js"],
   "compilerOptions": {
-    "rootDir": ".",
     "lib": ["es2020", "DOM"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
