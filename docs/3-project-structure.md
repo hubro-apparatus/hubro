@@ -1,18 +1,22 @@
 # Project Structure
 
-In a Hubro app specific folders and files play an important role in how the application works. By default Hubro expects a given project structure.
+Hubro is designed to use convention over configuration.
+It uses file-based routing for both pages and APIs.
+Page layouts and components work a similar way.
 
-If a Hubro app is created by the Hubro Launch tool the required project structure is auto created for you.
+A minimal Hubro app directory looks like this.
 
-If one create the Hubro app manually the structure must be created manually. Only the folders and files marked as required must be created for the application to function.
+- `package.json`
+- `pages/`
+  - `page.js`
 
-## Folders and Files
+If a Hubro app is created by the Hubro Launch tool the required project structure is created for you.
 
-Hubro utilizes the following structure:
+If you set up your Hubro app manually you must adhere to the same structure.
 
-### Top-level Files
+## Top-level Files
 
-The top level is the root of the application and are used to configure the application, manage dependencies and define environment variables. 
+The top level is the root of the application and is used to configure the application, manage dependencies and define environment variables.
 
 The following files are what we call top-level files:
 
@@ -26,7 +30,7 @@ The following files are what we call top-level files:
 
 The root of the application can contain other files than these top-level files. Hubro only care about the files listed here.
 
-### Top-level Folders
+## Top-level Folders
 
 Top-level folders are used to organize the application code.
 
@@ -37,4 +41,4 @@ Top-level folders are used to organize the application code.
  - `/public` - Optional - Static assets.
  - `/build` - Auto created - Where production ready assets will be placed by the build process.
 
-The root of the application can contain other folders than these top-level folders. Hubro only care about the folders listed here.
+The root of the application can contain other folders than these top-level folders. Hubro only cares about the folders listed here.
