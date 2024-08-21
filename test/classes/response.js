@@ -51,6 +51,7 @@ test('Response - .headers', async (t) => {
   await t.test('Illegal value', () => {
     const response = new HResponse();
     try {
+      // @ts-expect-error Testing bad input
       response.headers = 'foo:bar';
     } catch (err) {
       assert.match(err.message, /Value must be of type Headers/, 'Should throw');
@@ -97,6 +98,7 @@ test('Response - .status', async (t) => {
   await t.test('Illegal value', () => {
     const response = new HResponse();
     try {
+      // @ts-expect-error Testing bad input
       response.status = '204';
     } catch (err) {
       assert.match(err.message, /Value must be a integer/, 'Should throw');

@@ -17,10 +17,22 @@
     "lib"
   ],
   "exports": {
-    "./response": "./lib/classes/response.js",
-    "./request": "./lib/classes/request.js",
-    "./server": "./lib/main.js",
-    "./test": "./lib/test/test.js"
+    "./response": {
+      "types": "./types/classes/response.d.ts",
+      "default": "./lib/classes/response.js"
+    },
+    "./request": {
+      "types": "./types/classes/request.d.ts",
+      "default": "./lib/classes/request.js"
+    },
+    "./server": {
+      "types": "./types/main.d.ts",
+      "default": "./lib/main.js"
+    },
+    "./test": {
+      "types": "./types/test/test.d.ts",
+      "default": "./lib/test/test.js"
+    }
   },
   "imports": {
     "#components/*": "./components/*",
@@ -32,7 +44,12 @@
     "dev": "node ./bin/dev.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "node --test"
+    "test": "node --test",
+    "types": "run-s types:module types:fixup types:test",
+    "types:module": "tsc",
+    "types:fixup": "node fixup.js",
+    "types:test": "tsc --project tsconfig.test.json",
+    "prepublishOnly": "npm run types"
   },
   "author": "Trygve Lie",
   "license": "MIT",
@@ -43,8 +60,8 @@
     "@fastify/etag": "5.2.0",
     "@fastify/formbody": "7.4.0",
     "@fastify/static": "7.0.4",
-    "@lit-labs/ssr-client": "1.1.7",
     "@lit-labs/ssr": "3.2.2",
+    "@lit-labs/ssr-client": "1.1.7",
     "abslog": "2.4.4",
     "commander": "12.1.0",
     "dotenv": "16.4.5",
@@ -62,21 +79,24 @@
     "@rollup/plugin-replace": "5.0.7",
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "11.1.6",
+    "chokidar": "3.6.0",
     "esbuild": "0.23.1",
     "esbuild-plugin-import-map": "3.0.0-next.2",
     "rollup": "4.21.0",
-    "get-port": "7.1.0",
-    "chokidar": "3.6.0"
+    "get-port": "7.1.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
+    "@types/node": "22.4.0",
     "eslint": "9.9.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
     "globals": "15.9.0",
     "lit": "3.2.0",
+    "npm-run-all2": "6.2.2",
     "prettier": "3.3.3",
+    "typescript": "5.5.4",
     "semantic-release": "24.1.0"
   },
   "engines": {
