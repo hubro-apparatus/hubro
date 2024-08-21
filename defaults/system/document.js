@@ -12,9 +12,9 @@ const delayed = (time = 1000, slot = '') => {
 }
 
 const suspend = function* suspend() {
-  yield delayed(100, 'b');
-  yield delayed(200, 'c');
-  yield delayed(50, 'a');
+  yield delayed(1000, 'b');
+  yield delayed(2000, 'c');
+  yield delayed(500, 'a');
 }
 
 export default function* document(page, header) {
@@ -31,8 +31,8 @@ export default function* document(page, header) {
       
     // yield* render(html`${page}`);
 
+    /*
     yield* render(html`
-
       <template shadowrootmode="open">
         <header>Header: ${Date.now()}</header>
         <main>
@@ -43,6 +43,36 @@ export default function* document(page, header) {
         <footer>Footer</footer>
       </template>
     `)
+
+    yield* suspend();
+    */
+
+    yield* render(html`
+<template shadowrootmode="open">
+
+  <header>          
+    <template shadowrootmode="open">
+      <slot name="a"></slot>
+    </template>
+    <slot slot="a" name="a"></slot>
+  </header>
+
+  <main>
+    <template shadowrootmode="open">
+      <slot name="b"></slot>
+    </template>
+    <slot slot="b" name="b"></slot>
+  </main>
+
+  <footer>
+    <template shadowrootmode="open">
+      <slot name="c"></slot>
+    </template>
+    <slot slot="c" name="c"></slot>
+  </footer>
+
+</template>
+    `);
 
     yield* suspend();
 
