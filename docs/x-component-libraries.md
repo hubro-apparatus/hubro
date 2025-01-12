@@ -19,9 +19,16 @@ Lit based component libraries:
 
 # Features
  * https://markdown-it.github.io/
+ * https://github.com/rehypejs/rehype
  * https://developer.chrome.com/docs/workbox
  * https://lamplightdev.com/blog/2024/01/10/streaming-html-out-of-order-without-javascript/
  * https://www.npmjs.com/package/@fastify/early-hints
 
 # Other
  * https://microfrontend.dev/
+
+# Tools
+ * https://www.npmjs.com/package/concurrently
+
+# Doc ideas
+ * https://react.gg/visualized
