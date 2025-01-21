@@ -63,7 +63,7 @@
     "@lit-labs/ssr": "3.3.0",
     "@lit-labs/ssr-client": "1.1.7",
     "abslog": "2.4.4",
-    "commander": "13.0.0",
+    "commander": "13.1.0",
     "dotenv": "16.4.7",
     "fastify": "5.2.1",
     "fastify-plugin": "5.0.1",
