@@ -4,10 +4,12 @@ The Response Object is an Object which is used to create an outgoing HTTP respon
 
 The Object is created by the server and is used to set values, such as HTTP status, Headers etc, on as it is passed through the lifecycle of the global middleware, the routes middleware and the `page`, `action` or `route` of a request. 
 
+The Object is request bound which means that its **only** available for the request which is being processed. Any data stored on a request bound Object is **not** available to another request which might be processed in paralell.
+
 Example of setting a new status, which will yeld the server to respond with this status code instead of the default (200), on the Response Object in a middleware: 
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   response.status = 204;
 };
 ```
@@ -29,7 +31,7 @@ The value is a web standard [URL](https://developer.mozilla.org/en-US/docs/Web/A
 Example of creating a redirect to a different pathname, `/owl`, on the same server in a middleware:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   response.location = new URL('/owl', request.url);
 };
 ```
@@ -43,7 +45,7 @@ The property hold an web standard [Headers](https://developer.mozilla.org/en-US/
 Example of appending a `x-hubro` HTTP Header to a response in a middleware:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   response.headers.append('x-hubro', 'owl');
 };
 ```
@@ -53,7 +55,7 @@ One can replace the existing Headers Object by setting a new Header Object on th
 Example of setting a new Header Object in a middleware:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   const headers = new Headers({
     'x-hubro': 'owl',
   });
@@ -72,7 +74,7 @@ Please see the section "Writing middlewares" for further information.
 Example of setting a context value in a middleware:
 
 ```js
-export default async (request, response) => {
+export default async ({ server, request, response }) => {
   response.context = {
     bird: 'owl',
   };
@@ -88,7 +90,7 @@ The value must be a numeric value in the range of [`200-299`](https://developer.
 Example of setting a `307` redirection status code in an `action`:
 
 ```js
-export default async (request, response) => {
+export default async ({ server, request, response }) => {
   response.status = 307;
 };
 ```
