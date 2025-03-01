@@ -82,7 +82,7 @@
     "chokidar": "4.0.3",
     "esbuild": "0.25.0",
     "esbuild-plugin-import-map": "3.0.0-next.2",
-    "rollup": "4.34.8",
+    "rollup": "4.34.9",
     "get-port": "7.1.0"
   },
   "devDependencies": {
