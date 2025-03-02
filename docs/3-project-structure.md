@@ -3,7 +3,7 @@
 Hubro is designed to use convention over configuration.
 It uses file-based routing for both web pages and APIs.
 
-A minimal Hubro app directory looks like this.
+A minimal Hubro app directory looks like this:
 
 - `package.json`
 - `pages/`

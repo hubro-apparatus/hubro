@@ -9,4 +9,3 @@ test('Server - .config', async (t) => {
     assert.equal(server.config, undefined, 'Should be "undefined"');
   });
 });
-

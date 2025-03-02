@@ -116,6 +116,34 @@ test('Config - .dirSrc', async (t) => {
   });
 });
 
+test('Config - .dirAdapters', async (t) => {
+  await t.test('Custom cwd - Relative path', () => {
+    const config = new Config({ cwd: '/tmp' });
+    config.dirSrc = './src';
+    config.dirAdapters = './adapters';
+
+    assert.ok(config.dirAdapters instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirAdapters)), 'Should resolve to an absolute path');
+    assert.ok(
+      config.dirAdapters.href.endsWith('/tmp/src/adapters/'),
+      'Should end with set path and have a / at the end',
+    );
+  });
+
+  await t.test('Custom cwd - Absolute path', () => {
+    const config = new Config({ cwd: '/tmp' });
+    try {
+      config.dirAdapters = '/adapters';
+    } catch (err) {
+      assert.match(
+        err.message,
+        /Value for directories.adapters is not relative. Must be relative path./,
+        'Should throw if absolute',
+      );
+    }
+  });
+});
+
 test('Config - .dirBuild', async (t) => {
   await t.test('Custom cwd - Relative path', () => {
     const config = new Config({ cwd: '/tmp' });

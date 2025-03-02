@@ -3,6 +3,7 @@
   "version": "0.0.10",
   "type": "module",
   "description": "",
+  "types": "types/main.d.ts",
   "bin": {
     "hubro": "./bin/bin.js"
   },

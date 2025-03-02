@@ -24,7 +24,7 @@ The Response Object has the following properties:
 
 A setter and getter for setting [`Location`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Location) on the response.
 
-Location dictates HTTP Clients (and browsers) to request a new location, aka a redirect. Setting a location will also set `.status` to `308`. The `.status` can be set to a different status code after location have been set.
+Location dictates HTTP Clients (and browsers) to request a new location, aka a redirect. Setting a location will also set `.status` to `303`. The `.status` can be set to a different status code after location have been set.
 
 The value is a web standard [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) Object.
 
