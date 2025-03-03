@@ -35,8 +35,10 @@ test('HierarchyEntry - .uriMiddleware', async (t) => {
     const hierarchy = new Entry('hash-value', '/route/value');
     assert.strictEqual(hierarchy.uriMiddleware, undefined, 'Should be empty String');
 
-    hierarchy.uriMiddleware = pathToFileURL('/middleware.js');
-    assert.strictEqual(hierarchy.uriMiddleware.pathname, '/middleware.js', 'Should be set value');
+    const fileMiddleware = pathToFileURL('/middleware.js');
+
+    hierarchy.uriMiddleware = fileMiddleware;
+    assert.strictEqual(hierarchy.uriMiddleware.pathname, fileMiddleware.pathname, 'Should be set value');
   });
 });
 
@@ -45,8 +47,10 @@ test('HierarchyEntry - .uriClient', async (t) => {
     const hierarchy = new Entry('hash-value', '/route/value');
     assert.strictEqual(hierarchy.uriClient, undefined, 'Should be empty String');
 
-    hierarchy.uriClient = pathToFileURL('/client.js');
-    assert.strictEqual(hierarchy.uriClient.pathname, '/client.js', 'Should be set value');
+    const fileClient = pathToFileURL('/client.js');
+
+    hierarchy.uriClient = fileClient;
+    assert.strictEqual(hierarchy.uriClient.pathname, fileClient.pathname, 'Should be set value');
   });
 });
 
@@ -55,8 +59,10 @@ test('HierarchyEntry - .uriAction', async (t) => {
     const hierarchy = new Entry('hash-value', '/route/value');
     assert.strictEqual(hierarchy.uriAction, undefined, 'Should be empty String');
 
-    hierarchy.uriAction = pathToFileURL('/action.js');
-    assert.strictEqual(hierarchy.uriAction.pathname, '/action.js', 'Should be set value');
+    const fileAction = pathToFileURL('/action.js');
+
+    hierarchy.uriAction = fileAction;
+    assert.strictEqual(hierarchy.uriAction.pathname, fileAction.pathname, 'Should be set value');
   });
 });
 
@@ -65,8 +71,10 @@ test('HierarchyEntry - .uriRoute', async (t) => {
     const hierarchy = new Entry('hash-value', '/route/value');
     assert.strictEqual(hierarchy.uriRoute, undefined, 'Should be empty String');
 
-    hierarchy.uriRoute = pathToFileURL('/route.js');
-    assert.strictEqual(hierarchy.uriRoute.pathname, '/route.js', 'Should be set value');
+    const fileRoute = pathToFileURL('/route.js');
+
+    hierarchy.uriRoute = fileRoute;
+    assert.strictEqual(hierarchy.uriRoute.pathname, fileRoute.pathname, 'Should be set value');
   });
 });
 
@@ -75,8 +83,10 @@ test('HierarchyEntry - .uriPage', async (t) => {
     const hierarchy = new Entry('hash-value', '/route/value');
     assert.strictEqual(hierarchy.uriPage, undefined, 'Should be empty String');
 
-    hierarchy.uriPage = pathToFileURL('/page.js');
-    assert.strictEqual(hierarchy.uriPage.pathname, '/page.js', 'Should be set value');
+    const filePage = pathToFileURL('/page.js');
+
+    hierarchy.uriPage = filePage;
+    assert.strictEqual(hierarchy.uriPage.pathname, filePage.pathname, 'Should be set value');
   });
 });
 
