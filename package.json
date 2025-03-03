@@ -88,7 +88,7 @@
     "get-port": "7.1.0"
   },
   "devDependencies": {
-    "@eik/semantic-release-config": "1.0.0",
+    "@eik/semantic-release-config": "1.0.2",
     "npm-run-all2": "7.0.2",
     "@types/node": "22.13.9",
     "eslint": "9.21.0",
