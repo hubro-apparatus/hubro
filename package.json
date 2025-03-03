@@ -1,6 +1,6 @@
 {
   "name": "hubro",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "",
   "types": "types/main.d.ts",

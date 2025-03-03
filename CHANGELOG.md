@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/hubro-apparatus/hubro/compare/v0.1.0...v0.1.1) (2025-03-03)
+
+
+### Bug Fixes
+
+* Update README ([629359c](https://github.com/hubro-apparatus/hubro/commit/629359c1f7f99f12ea4cbc12a19cec8111f53e40))
+
 # [0.1.0](https://github.com/hubro-apparatus/hubro/compare/v0.0.10...v0.1.0) (2025-03-03)
 
 
