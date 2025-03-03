@@ -14,7 +14,7 @@ test('Response - .location', async (t) => {
     response.location = new URL('http://localhost:4000/foo');
     assert.ok(response.location instanceof URL, 'Should be instance of URL');
     assert.equal(response.location.href, 'http://localhost:4000/foo', 'Should be set value');
-    assert.equal(response.status, 308, 'Should be 308');
+    assert.equal(response.status, 303, 'Should be 303');
   });
 
   await t.test('Illegal value', () => {

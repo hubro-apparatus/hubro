@@ -1,10 +1,9 @@
 # Project Structure
 
 Hubro is designed to use convention over configuration.
-It uses file-based routing for both pages and APIs.
-Page layouts and components work a similar way.
+It uses file-based routing for both web pages and APIs.
 
-A minimal Hubro app directory looks like this.
+A minimal Hubro app directory looks like this:
 
 - `package.json`
 - `pages/`
@@ -38,7 +37,9 @@ Top-level folders are used to organize the application code.
  - `/system` - Optional - Hold application specific system wide templates and pages such as http error pages etc.
  - `/layouts` - Optional - Holds application specific page layouts.
  - `/components` - Optional - Hold application specific components.
- - `/public` - Optional - Static assets.
+ - `/public` - Optional - Holds static assets.
+ - `/adapters` - Optional - Holds adapter classes used for connecting to databases etc.
  - `/build` - Auto created - Where production ready assets will be placed by the build process.
+
 
 The root of the application can contain other folders than these top-level folders. Hubro only cares about the folders listed here.

@@ -7,7 +7,7 @@ In a middleware one can also fetch data from a backend API or a database and the
 Simple example of a middleware which reads the search query parameter `text` and forwards it to a page:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   const text = request.url.searchParams.get('text');
   return {
     text,
@@ -73,20 +73,25 @@ TO BE IMPLEMENTED
 
 ## Writing middleware
 
-A middleware is an asyncronus function exported with the name `middleware`. The function takes two arguments:
+A middleware is an asyncronus function exported with the name `middleware`. The function takes an argument object with the following argument properties:
 
+ * server - An instance of Server - Holds properties features of the server
  * request - An instance of Request - Holds properties and values of the incomming HTTP request
  * response - An instance of Response - Holds properties and values to be written on the outgoing HTTP response
 
 Example of a middleware signature:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   // Middleware logic
 };
 ```
 
-The Request Object is a read only Object which contain properties such as the Search Query Parameters, URL parameters and Headers on the inbound request. The Response Object contain properties to set values, such as HTTP status code, Headers, we want to set on the outbound response. The Response Object also contain a `.context` property for passing arbitrary values between middlewares and the `routes`, `actions` and `pages`.
+The Server Object contain server bound properties and functionallity, such as adapters, the application config, envrionement variables etc which is global for the whole running instance of the application.
+
+The Request Object is a read only Object which contain properties such as the Search Query Parameters, URL parameters and Headers on the inbound request. 
+
+The Response Object contain properties to set values, such as HTTP status code, Headers, we want to set on the outbound response. The Response Object also contain a `.context` property for passing arbitrary values between middlewares and the `routes`, `actions` and `pages`.
 
 ### Reading request values
 
@@ -108,7 +113,7 @@ http://localhost:4000/owls/hubro/?sort=ascending
 we get hold of the different parts in the URL in a middleware as follow:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
 
   // Access URL Parameters
   const { species, name } = request.urlParams;
@@ -128,7 +133,7 @@ See the Request Object for an overview of properties and methods.
 Setting a HTTP header `x-hubro` to the value `owl` and redirecting to `/owl` with the HTTP status code `307`:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   
   // Append an HTTP Header
   request.headers.append('x-hubro', 'owl');
@@ -150,7 +155,7 @@ Passing data between the Global Level middleware and the Route Level middleware 
 Example of setting a value in the Global Level middleware:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   response.context = {
     name: 'Hubro Apparatus',
   };
@@ -160,7 +165,7 @@ export const middleware = async (request, response) => {
 One can then read this value in the Route Level middleware:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   const { name } = response.context;
   console.log(name);     // yields "Hubro Apparatus"
 };
@@ -175,13 +180,13 @@ An inline `middleware` is defined by exporting an async function with the name `
 Example of an inline middleware in an `action` file:
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   return {
     type: 'owl',
   };
 };
 
-export default async (request, response) => {
+export default async ({ server, request, response }) => {
   const { type } = request.context;
   response.headers.append('x-hubro', type);
 };

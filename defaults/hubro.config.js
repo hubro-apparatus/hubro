@@ -11,6 +11,7 @@ export default [
     directories: {
       // src: './',
       // components: './components',
+      // adapters: './adapters',
       // layouts: './layouts',
       // public: './public',
       // system: './system',

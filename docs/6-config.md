@@ -57,6 +57,7 @@ export default [
   {
     directories: {
       src: './',
+      adapters: './adapters',
       components: './components',
       layouts: './layouts',
       public: './public',
@@ -100,6 +101,14 @@ If `src` is configured to `./source` the application directory structure will be
 |  |  |--/css
 |  |  |--/js
 ```
+
+### adapters
+
+Defines the directory for Adapters. Defaults to `./adapters`.
+
+The value must be a relative path.
+
+If `src` is configured, the value for this property will be prefixed with the value from `src`. 
 
 ### components
 

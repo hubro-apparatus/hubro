@@ -9,6 +9,8 @@ Request is an immutable object which represents an incoming HTTP request to the 
 The Request object is passed through the lifecycle of the global middleware,
 the routes middleware and the `page`, `action` or `route` of a request.
 
+The Object is request bound which means that its **only** available for the request which is being processed. Any data stored on a request bound Object is **not** available to another request which might be processed in paralell.
+
 The Request object in Hubro is a small abstraction on top of the [Node.js Request](https://nodejs.org/docs/latest/api/globals.html#request)
 handeled by the underlaying HTTP server. The values on this object have been parsed and
 processed by the underlying HTTP server and Hubro.
@@ -42,7 +44,7 @@ Given a request for the URL `http://localhost:4000/owl/234827/` the returned obj
 Below is an example of getting the `id` URL parameter in a middleware.
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   const { id } = request.urlParams;
   return {
     id,
@@ -60,7 +62,7 @@ object with the HTTP headers of the request.
 Below is an example of getting the `x-hubro` HTTP header in a middleware.
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   const bird = request.headers.get('x-hubro');
   return {
     bird,
@@ -77,7 +79,7 @@ A getter that returns the HTTP method for the request. The returned value will a
 Below is an example of doing different operations in a middleware based on the request method.
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   if (request.method === 'POST') {
     // Do something
   }
@@ -112,7 +114,7 @@ Say you have a form that `POST`s an input field with the name `bird` to the rout
 When the form is submitted, the values of the form can be accessed as follow in `pages/submit/action.js`.
 
 ```js
-export default async (request, response) => {
+export default async ({ server, request, response }) => {
   const bird = request.body.get('bird');
 };
 ```
@@ -124,7 +126,7 @@ Setting a value on this property will throw an Error.
 A getter that returns the URL of the request as a [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) object.
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
   const pathname = request.url.pathname;
 
   if (pathname === '/owl') {
@@ -145,7 +147,8 @@ Below is an example of accessing a Search Query Parameter on the Request object 
 ```js
 // Example request URL
 // http://localhost:4321/example/?text=Hello%2C%20World!
-export const middleware = async (request, response) => {
+
+export const middleware = async ({ server, request, response }) => {
   // Hello, World!
   const text = request.url.searchParams.get('text');
   return {
@@ -171,7 +174,7 @@ The method takes the following arguments:
 Below is an example of a middleware where all properties of the incomming request are forwarded on an HTTP request to an upstream HTTP server.
 
 ```js
-export const middleware = async (request, response) => {
+export const middleware = async ({ server, request, response }) => {
 
   // Clone the URL object of the incomming request.
   const url = new URL(request.url);
