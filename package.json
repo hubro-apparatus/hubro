@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "type": "module",
   "description": "",
-  "types": "types/main.d.ts",
   "bin": {
     "hubro": "./bin/bin.js"
   },
@@ -33,6 +32,9 @@
     "./test": {
       "types": "./types/test/test.d.ts",
       "default": "./lib/test/test.js"
+    },
+    "./ssr": {
+      "default": "./lib/modules/ssr/ssr.js"
     }
   },
   "imports": {
