@@ -21,7 +21,7 @@ Pages must include a function as its default export. That function must return
 a Lit `TemplateResult` (typically [html](https://lit.dev/docs/api/static-html/#html)).
 
 ```js
-import { html } from 'lit';
+import { html } from 'hubro/ssr';
 
 export default () => {
   return html`
@@ -62,7 +62,7 @@ Let's make a form that submits your favorite `bird` to an action. We'll be worki
 In `pages/page.js` we add a form that `POST`s an `input` with the name `bird` to the action `/submit`.
 
 ```js
-import { html } from 'lit';
+import { html } from 'hubro/ssr';
 
 export default () => {
   return html`
