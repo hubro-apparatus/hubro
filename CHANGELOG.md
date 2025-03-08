@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/hubro-apparatus/hubro/compare/v0.1.1...v0.2.0) (2025-03-08)
+
+
+### Features
+
+* Export lit-labs/ssr as hubro/ssr ([d9226d3](https://github.com/hubro-apparatus/hubro/commit/d9226d33ebc35e2995efb026734522bf95e88097))
+
 ## [0.1.1](https://github.com/hubro-apparatus/hubro/compare/v0.1.0...v0.1.1) (2025-03-03)
 
 
