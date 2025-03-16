@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import Hierarchy from '../../lib/hierarchy/hierarchy.js';
-import Config from '../../lib/common/config.js';
+import Config from '../../lib/config/config.js';
 
 test('Hierarchy - .setDocument()', async (t) => {
   await t.test('Default', async () => {

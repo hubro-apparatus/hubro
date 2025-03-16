@@ -6,7 +6,7 @@ import fs from 'node:fs';
 
 import ServerDevelopment from '../lib/server/server-dev.js';
 import ServerProduction from '../lib/server/server-prod.js';
-import Config from '../lib/common/config.js';
+import Config from '../lib/config/config.js';
 import build from '../lib/build/build.js';
 
 // @ts-ignore

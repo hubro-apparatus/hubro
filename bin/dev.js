@@ -1,5 +1,5 @@
 import Server from '../lib/server/server-dev.js';
-import Config from '../lib/common/config.js';
+import Config from '../lib/config/config.js';
 
 const config = new Config({
   development: true,
