@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/hubro-apparatus/hubro/compare/v0.2.0...v0.2.1) (2025-03-16)
+
+
+### Bug Fixes
+
+* Client side only ([ce70825](https://github.com/hubro-apparatus/hubro/commit/ce70825575e401092340347de4d0cc73879b8b33))
+
 # [0.2.0](https://github.com/hubro-apparatus/hubro/compare/v0.1.1...v0.2.0) (2025-03-08)
 
 
