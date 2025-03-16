@@ -8,7 +8,14 @@ Lit based component libraries:
  * https://shoelace.style/
  * https://nordhealth.design/
  * https://mapsplatform.google.com/resources/blog/build-maps-faster-web-components/
+ * https://www.media-chrome.org/
+ * https://modelviewer.dev/
  
+
+# SSR
+ * https://github.com/luwes/wesc
+ * https://github.com/ProjectEvergreen/wcc
+
 
 # Inspiration
 
@@ -27,8 +34,13 @@ Lit based component libraries:
 # Other
  * https://microfrontend.dev/
 
+
 # Tools
  * https://www.npmjs.com/package/concurrently
 
 # Doc ideas
  * https://react.gg/visualized
+
+# Dev ex
+ * https://github.com/runem/web-component-analyzer
+ * https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin&ssr=false
