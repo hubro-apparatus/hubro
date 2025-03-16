@@ -3,8 +3,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 
-import Config from '../../lib/common/config.js';
-import { resolveCwd } from '../../lib/common/utils.js';
+import Config from '../../lib/config/config.js';
+import { resolveCwd } from '../../lib/utils/utils.js';
 
 // Semver regex
 // https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
